@@ -3,12 +3,12 @@ package com.gsilverio.barber.services;
 import com.gsilverio.barber.dto.UserDTO;
 import com.gsilverio.barber.entities.User;
 import com.gsilverio.barber.repositories.UserRepository;
-import com.gsilverio.barber.services.exceptions.EntityNotFoundException;
+import com.gsilverio.barber.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,7 +28,7 @@ public class UserService {
         Optional<User> obj = userRepository.findById(id);
 
         //orElseThrow lanca uma execao caso nao tenha uma entitadade no obj
-        User entity = obj.orElseThrow(() -> new EntityNotFoundException("Entity not found"));
+        User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         return new UserDTO(entity);
     }
     @Transactional
@@ -40,4 +40,19 @@ public class UserService {
         entity.setPassword(dto.getPassword());
         entity = userRepository.save(entity);
         return new UserDTO((entity));    }
+    @Transactional
+    public UserDTO update(Long id, UserDTO dto) {
+        try {
+            User entity = userRepository.getReferenceById(id);
+            entity.setName(dto.getName());
+            entity.setEmail(dto.getEmail());
+            entity.setPhone(dto.getPhone());
+            entity.setPassword(dto.getPassword());
+            entity = userRepository.save(entity);
+            return new UserDTO((entity));
+        } catch(EntityNotFoundException e){
+            throw new ResourceNotFoundException("Id not found" + id);
+        }
+
+    }
 }
