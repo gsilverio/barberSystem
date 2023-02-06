@@ -16,18 +16,16 @@ public class User implements Serializable {
     private String name;
     private String email;
     private String phone;
-    private LocalDate birthDate;
     private String password;
 
     public User(){
     }
 
-    public User(Long id, String name, String email, String phone, LocalDate birthDate, String password) {
+    public User(Long id, String name, String email, String phone,String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.birthDate = birthDate;
         this.password = password;
     }
 
@@ -61,14 +59,6 @@ public class User implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
     }
 
     public String getPassword() {
