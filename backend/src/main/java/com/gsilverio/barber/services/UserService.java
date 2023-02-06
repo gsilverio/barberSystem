@@ -3,9 +3,12 @@ package com.gsilverio.barber.services;
 import com.gsilverio.barber.dto.UserDTO;
 import com.gsilverio.barber.entities.User;
 import com.gsilverio.barber.repositories.UserRepository;
+import com.gsilverio.barber.services.exceptions.DataBaseExeption;
 import com.gsilverio.barber.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,8 +54,18 @@ public class UserService {
             entity = userRepository.save(entity);
             return new UserDTO((entity));
         } catch(EntityNotFoundException e){
-            throw new ResourceNotFoundException("Id not found" + id);
+            throw new ResourceNotFoundException("Id not found " + id);
         }
 
+    }
+
+    public void delete(Long id) {
+        try {
+            userRepository.deleteById(id);
+        }catch (EmptyResultDataAccessException e){
+            throw new ResourceNotFoundException("Id not found " + id);
+        }catch (DataIntegrityViolationException e){
+            throw new DataBaseExeption("Integrity violation");
+        }
     }
 }

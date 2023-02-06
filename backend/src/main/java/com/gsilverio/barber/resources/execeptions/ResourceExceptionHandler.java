@@ -1,5 +1,6 @@
 package com.gsilverio.barber.resources.execeptions;
 
+import com.gsilverio.barber.services.exceptions.DataBaseExeption;
 import com.gsilverio.barber.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -20,5 +21,16 @@ public class ResourceExceptionHandler {
         err.setMessage(e.getMessage());
         err.setPath(request.getRequestURI());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
+    @ExceptionHandler(DataBaseExeption.class)
+    public ResponseEntity<StandardError> entityNotFound(DataBaseExeption e, HttpServletRequest request){
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        StandardError err = new StandardError();
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Database exception");
+        err.setMessage(e.getMessage());
+        err.setPath(request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
     }
 }
