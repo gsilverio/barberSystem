@@ -31,4 +31,13 @@ public class UserService {
         User entity = obj.orElseThrow(() -> new EntityNotFoundException("Entity not found"));
         return new UserDTO(entity);
     }
+    @Transactional
+    public UserDTO insert(UserDTO dto) {
+        User entity = new User();
+        entity.setName(dto.getName());
+        entity.setEmail(dto.getEmail());
+        entity.setPhone(dto.getPhone());
+        entity.setPassword(dto.getPassword());
+        entity = userRepository.save(entity);
+        return new UserDTO((entity));    }
 }
