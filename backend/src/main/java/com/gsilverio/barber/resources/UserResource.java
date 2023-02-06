@@ -1,5 +1,6 @@
 package com.gsilverio.barber.resources;
 
+import com.gsilverio.barber.dto.UserDTO;
 import com.gsilverio.barber.entities.User;
 import com.gsilverio.barber.services.UserService;
 import org.apache.coyote.Response;
@@ -19,8 +20,8 @@ public class UserResource {
     @Autowired
     private UserService userService;
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
-        List<User> user = userService.findAll();
+    public ResponseEntity<List<UserDTO>> findAll(){
+        List<UserDTO> user = userService.findAll();
         return ResponseEntity.ok().body(user);
     }
 }
