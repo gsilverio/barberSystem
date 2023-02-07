@@ -4,6 +4,7 @@ package com.gsilverio.barber.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Objects;
 @Entity
@@ -17,6 +18,10 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant createdAT;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant updatedAT;
 
     public User(){
     }
@@ -69,6 +74,21 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public Instant getCreatedAT() {
+        return createdAT;
+    }
+
+    public Instant getUpdatedAT() {
+        return updatedAT;
+    }
+    @PrePersist
+    public void prePersist(){
+        createdAT = Instant.now();
+    }
+    @PreUpdate
+    public void preUpdate(){
+        updatedAT = Instant.now();
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
