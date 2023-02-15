@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 @Entity
 @Table(name = "tb_user")
@@ -18,11 +20,13 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+
+    /*@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAT;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant updatedAT;
-
+    private Instant updatedAT;*/
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders = new ArrayList<>();
     public User(){
     }
 
@@ -74,11 +78,15 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Instant getCreatedAT() {
+    /*public Instant getCreatedAT() {
         return createdAT;
+    }*/
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public Instant getUpdatedAT() {
+   /* public Instant getUpdatedAT() {
         return updatedAT;
     }
     @PrePersist
@@ -88,7 +96,7 @@ public class User implements Serializable {
     @PreUpdate
     public void preUpdate(){
         updatedAT = Instant.now();
-    }
+    }*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

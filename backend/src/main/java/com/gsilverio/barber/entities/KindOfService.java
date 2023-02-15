@@ -3,6 +3,9 @@ package com.gsilverio.barber.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="tb_kind_of_service")
@@ -15,6 +18,8 @@ public class KindOfService implements Serializable {
     private Double price;
     private String imgUrl;
 
+    @OneToMany(mappedBy = "id.kindOfService")
+    private Set<OrderService> service = new HashSet<>();
     public KindOfService(){
 
     }
@@ -55,5 +60,12 @@ public class KindOfService implements Serializable {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public Set<OrderService> getService() {
+        return service;
+    }
+    public List<Order> getOrder(){
+        return service.stream().map(x->x.getOrder()).toList();
     }
 }

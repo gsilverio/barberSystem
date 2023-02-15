@@ -19,6 +19,8 @@ import java.util.List;
 public class UserResource {
     @Autowired
     private UserService userService;
+
+    //BUSCA PAGINADA
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll(){
         List<UserDTO> user = userService.findAll();
