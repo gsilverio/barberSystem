@@ -1,15 +1,27 @@
 package com.gsilverio.barber.dto;
 
 import com.gsilverio.barber.entities.User;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID =1L;
     private Long id;
+    @NotBlank(message = "Campo requerido")
+    @Size(min = 3, max = 40, message = "Nome de usuario deve ter entre 3 a 40 caracteres")
     private String name;
+    @Email(message = "Email tem que ser valido")
+    @NotBlank(message = "Campo requerido")
+    @Size(min = 10, max = 30, message = "Nome de usuario deve ter entre 10 a 30 caracteres")
     private String email;
+    @NotBlank(message = "Campo requerido")
+    @Size(min = 11, message = "Numero de celular deve ter no minimo 11 caracteres numericos")
     private String phone;
+    @NotBlank(message = "Campo requerido")
+    @Size(min = 7, max = 40, message = "Senha deve conter entre 3 a 40 caracteres")
     private String password;
 
     public UserDTO(){

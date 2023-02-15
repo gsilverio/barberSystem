@@ -3,6 +3,7 @@ package com.gsilverio.barber.resources;
 import com.gsilverio.barber.dto.UserDTO;
 import com.gsilverio.barber.entities.User;
 import com.gsilverio.barber.services.UserService;
+import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class UserResource {
         return ResponseEntity.ok().body(dto);
     }
     @PostMapping
-    public ResponseEntity<UserDTO> insert(@RequestBody UserDTO dto){
+    public ResponseEntity<UserDTO> insert(@Valid  @RequestBody UserDTO dto){
         dto = userService.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
@@ -40,7 +41,7 @@ public class UserResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id,@RequestBody UserDTO dto) {
+    public ResponseEntity<UserDTO> update(@Valid @PathVariable Long id,@RequestBody UserDTO dto) {
         dto = userService.update(id, dto);
         return ResponseEntity.ok().body(dto);
     }

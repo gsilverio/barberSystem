@@ -4,6 +4,7 @@ import com.gsilverio.barber.dto.KindOfServiceDTO;
 import com.gsilverio.barber.dto.UserDTO;
 import com.gsilverio.barber.entities.KindOfService;
 import com.gsilverio.barber.services.KindOfServService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,14 +29,14 @@ public class KindOfServiceResource {
         return ResponseEntity.ok().body(dto);
     }
     @PostMapping
-    public ResponseEntity<KindOfServiceDTO> insert(@RequestBody KindOfServiceDTO dto){
+    public ResponseEntity<KindOfServiceDTO> insert(@Valid @RequestBody KindOfServiceDTO dto){
         dto  = kindOfServService.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<KindOfServiceDTO> update(@PathVariable Long id,@RequestBody KindOfServiceDTO dto) {
+    public ResponseEntity<KindOfServiceDTO> update(@Valid @PathVariable Long id,@RequestBody KindOfServiceDTO dto) {
         dto = kindOfServService.update(id, dto);
         return ResponseEntity.ok().body(dto);
     }
