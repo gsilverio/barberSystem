@@ -1,11 +1,15 @@
 package com.gsilverio.barber.dto;
 
+import com.gsilverio.barber.entities.Order;
 import com.gsilverio.barber.entities.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID =1L;
@@ -24,6 +28,7 @@ public class UserDTO implements Serializable {
     @Size(min = 7, max = 40, message = "Senha deve conter entre 3 a 40 caracteres")
     private String password;
 
+    private List<Order> orders = new ArrayList<>();
     public UserDTO(){
 
     }
@@ -76,6 +81,13 @@ public class UserDTO implements Serializable {
         this.password = password;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
     public UserDTO(User entity){
         this.id=entity.getId();
         this.name=entity.getName();
@@ -83,4 +95,9 @@ public class UserDTO implements Serializable {
         this.phone=entity.getPhone();
         this.password=entity.getPassword();
     }
+    public UserDTO(User entity, Set<Order> orders){
+        this(entity);
+        orders.forEach(cat->this.orders.add(cat));
+    }
+
 }
