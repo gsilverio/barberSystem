@@ -6,9 +6,9 @@ INSERT INTO tb_user(name, email, phone, password) VALUES ('PAULO','PAULO@GMAIL.C
 
 
 INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('CORTE CABELO', '30.0', 'https://user-images.githubusercontent.com/33436010/220815758-8536162a-e8e8-4ee0-865a-ac8ae04da042.png');
-INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('CORTE BARBA', '30.0', 'https://llalalaalla.com.br');
-INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('LIMPEZA DE PELE', '40.0', 'https://llalalaalla.com.br');
-INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('PLATINAR CABELO', '120.0', 'https://llalalaalla.com.br');
+INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('CORTE BARBA', '30.0', 'https://github.com/gsilverio/barberSystem/blob/main/resources/images/corteBarba.png?raw=true');
+INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('LIMPEZA DE PELE', '40.0', 'https://github.com/gsilverio/barberSystem/blob/main/resources/images/limpezaPele.png?raw=true');
+INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('PINTAR CABELO', '120.0', 'https://github.com/gsilverio/barberSystem/blob/main/resources/images/colorirCabelo.png?raw=true');
 
 
 INSERT INTO tb_order(date, status, user_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-14T10:50:07.12345Z', 1, 1);

@@ -1,25 +1,37 @@
 import "./styles.css";
+import axios from "axios";
 import ServiceCard from "../../components/ServiceCard";
+import { useState, useEffect } from "react";
 import { Service } from "../../types/service";
 import { Link } from "react-router-dom";
+import { AxiosParams, SpringPage } from "../../types/vendor/axios";
+import { BASE_URL } from "../../util/requests";
 const ServiceList = () => {
-  const service: Service = {
-    id: 1,
-    nameOfService: "CORTE CABELO",
-    price: 31.0,
-    imgUrl:
-      "https://github.com/gsilverio/barberSystem/blob/main/resources/images/corteCabelo.png?raw=true",
-  };
+  const [page, setPage] = useState<SpringPage<Service>>();
+
+  useEffect(() => {
+    const params: AxiosParams = {
+      method: "GET",
+      url: `${BASE_URL}/kindofservice`,
+    };
+    axios(params).then((response) => {
+      setPage(response.data);
+    });
+  }, []);
 
   return (
     <>
       <div className="container my-4">
         <div className="row">
-          <div className="col-xl-3">
-            <Link to="/kindofservice/1">
-              <ServiceCard service={service} />
-            </Link>
-          </div>
+          {page?.content.map((service) => {
+            return (
+              <div className="col-xl-4">
+                <Link to="/kindofservice/1">
+                  <ServiceCard service={service} />
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

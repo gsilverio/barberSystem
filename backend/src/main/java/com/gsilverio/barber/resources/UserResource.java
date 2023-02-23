@@ -6,6 +6,8 @@ import com.gsilverio.barber.services.UserService;
 import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -14,7 +16,7 @@ import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping(value="/users")
 public class UserResource {
@@ -23,8 +25,8 @@ public class UserResource {
 
     //BUSCA PAGINADA
     @GetMapping
-    public ResponseEntity<List<UserDTO>> findAll(){
-        List<UserDTO> user = userService.findAll();
+    public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable){
+        Page<UserDTO> user = userService.findAll(pageable);
         return ResponseEntity.ok().body(user);
     }
     @GetMapping(value="/{id}")

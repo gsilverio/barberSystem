@@ -11,7 +11,7 @@ const Rotas = () => (
       <Route path="/" element={<Home />} />
       <Route path="/kindofservice" element={<ServiceList />} />
       <Route path="/kindofservice/:serviceId" element={<ServiceDetails />} />
-      <Route path="/userlist" element={<UserList />} />
+      <Route path="/users" element={<UserList />} />
     </Routes>
   </BrowserRouter>
 );

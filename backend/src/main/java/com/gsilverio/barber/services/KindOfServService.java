@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,10 +26,9 @@ public class KindOfServService {
     @Autowired
     private KindOfServiceRepository kindOfServiceRepository;
     @Transactional(readOnly = true)
-    public List<KindOfServiceDTO> findAll(){
-        List<KindOfService> kService = kindOfServiceRepository.findAll();
-        List<KindOfServiceDTO> kServiceDTO = kService.stream().map(x->new KindOfServiceDTO(x)).collect(Collectors.toList());
-        return kServiceDTO;
+    public Page<KindOfServiceDTO> findAll(Pageable pageable){
+        Page<KindOfService> kService = kindOfServiceRepository.findAll(pageable);
+        return kService.map(x-> new KindOfServiceDTO(x));
     }
     @Transactional(readOnly = true)
     public KindOfServiceDTO findById(Long id) {

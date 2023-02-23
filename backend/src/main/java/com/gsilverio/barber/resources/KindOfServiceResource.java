@@ -6,12 +6,15 @@ import com.gsilverio.barber.entities.KindOfService;
 import com.gsilverio.barber.services.KindOfServService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+@CrossOrigin(origins = {"http://localhost:3000"})
 
 @RestController
 @RequestMapping(value = "/kindofservice")
@@ -19,8 +22,8 @@ public class KindOfServiceResource {
     @Autowired
     private KindOfServService kindOfServService;
     @GetMapping
-    public ResponseEntity<List<KindOfServiceDTO>> findAll(){
-        List<KindOfServiceDTO> list = kindOfServService.findAll();
+    public ResponseEntity<Page<KindOfServiceDTO>> findAll(Pageable pageable){
+        Page<KindOfServiceDTO> list = kindOfServService.findAll(pageable);
         return ResponseEntity.ok().body(list);
     }
     @GetMapping(value="/{id}")
