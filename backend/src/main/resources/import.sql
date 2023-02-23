@@ -5,7 +5,7 @@ INSERT INTO tb_user(name, email, phone, password) VALUES ('JOSE','JOSE@GMAIL.COM
 INSERT INTO tb_user(name, email, phone, password) VALUES ('PAULO','PAULO@GMAIL.COM','6296930508','12345');
 
 
-INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('CORTE CABELO', '30.0', 'https://drive.google.com/file/d/1G66MVDR-msiRMDA4jF5StGKFl_fv628m/view?usp=share_link');
+INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('CORTE CABELO', '30.0', 'https://user-images.githubusercontent.com/33436010/220815758-8536162a-e8e8-4ee0-865a-ac8ae04da042.png');
 INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('CORTE BARBA', '30.0', 'https://llalalaalla.com.br');
 INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('LIMPEZA DE PELE', '40.0', 'https://llalalaalla.com.br');
 INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('PLATINAR CABELO', '120.0', 'https://llalalaalla.com.br');

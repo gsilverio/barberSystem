@@ -12,6 +12,10 @@
 .main-menu {
   display: flex;
   font-size: 15px;
-  width: 500px;
-  justify-content: space-between;
+  width: 300px;
+  justify-content: space-around;
+}
+.menu-navbar {
+  display: flex;
+  justify-content: end;
 }

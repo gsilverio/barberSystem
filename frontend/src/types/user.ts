@@ -2,6 +2,6 @@ export type User =
 {
     id: number;
     name: string;
-    email: number;
-    phones: string;
+    email: string;
+    phone: string;
 }

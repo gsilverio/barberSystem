@@ -1,44 +1,24 @@
 import "./styles.css";
-import Navbar from "../../components/Navbar";
 import ServiceCard from "../../components/ServiceCard";
 import { Service } from "../../types/service";
+import { Link } from "react-router-dom";
 const ServiceList = () => {
   const service: Service = {
     id: 1,
     nameOfService: "CORTE CABELO",
-    price: 30.0,
+    price: 31.0,
     imgUrl:
-      "https://drive.google.com/file/d/1G66MVDR-msiRMDA4jF5StGKFl_fv628m/view?usp=share_link",
+      "https://github.com/gsilverio/barberSystem/blob/main/resources/images/corteCabelo.png?raw=true",
   };
 
   return (
     <>
-      <Navbar />
       <div className="container my-4">
         <div className="row">
           <div className="col-xl-3">
-            <ServiceCard service={service} />
-          </div>
-          <div className="col-xl-3">
-            <ServiceCard service={service} />
-          </div>
-          <div className="col-xl-3">
-            <ServiceCard service={service} />
-          </div>
-          <div className="col-xl-3">
-            <ServiceCard service={service} />
-          </div>
-          <div className="col-xl-3">
-            <ServiceCard service={service} />
-          </div>
-          <div className="col-xl-3">
-            <ServiceCard service={service} />
-          </div>
-          <div className="col-xl-3">
-            <ServiceCard service={service} />
-          </div>
-          <div className="col-xl-3">
-            <ServiceCard service={service} />
+            <Link to="/kindofservice/1">
+              <ServiceCard service={service} />
+            </Link>
           </div>
         </div>
       </div>
