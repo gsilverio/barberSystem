@@ -1,9 +1,14 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-
+import Navbar from "./components/Navbar";
+import ServiceList from "./pages/ServicesList";
+import ServiceCard from "./components/ServiceCard";
+import Rotas from "./Rotas";
 function App() {
-  return <div className="App">asasas</div>;
+  return (
+    <>
+      <Rotas />
+    </>
+  );
 }
 
 export default App;

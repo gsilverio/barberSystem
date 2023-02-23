@@ -1,0 +1,17 @@
+.navbar-container {
+  background-color: aqua;
+  padding-left: 10px;
+  height: 70px;
+}
+
+.nav-logo-text {
+  color: #000;
+  font-size: 20px;
+}
+
+.main-menu {
+  display: flex;
+  font-size: 15px;
+  width: 500px;
+  justify-content: space-between;
+}
