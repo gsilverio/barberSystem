@@ -1,11 +1,16 @@
 import "./styles.css";
+import { Service } from "../../types/service";
 
-const ServicePrice = () => {
+type Props = {
+  price: number;
+};
+
+const ServicePrice = ({ price }: Props) => {
   return (
     <>
       <div className="service-price-container">
         <span>R$</span>
-        <h3>50,00</h3>
+        <h3>{price}</h3>
       </div>
     </>
   );

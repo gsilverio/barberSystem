@@ -1,26 +1,27 @@
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-container">
       <div className="container-fluid">
-        <a href="link" className="nav-logo-text">
+        <Link to="/" className="nav-logo-text">
           BarberSystem
-        </a>
+        </Link>
 
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav offset-md-2 main-menu">
             <li>
-              <a href="link">Services List</a>
+              <Link to="/kindofservice">Services List</Link>
             </li>
             <li>
-              <a href="link">Users List</a>
+              <Link to="/userlist">Users List</Link>
             </li>
             <li>
-              <a href="link">ServiceCard</a>
+              <Link to="/servicecard">ServiceCard</Link>
             </li>
             <li>
-              <a href="link">UserCard</a>
+              <Link to="/usercard">UserCard</Link>
             </li>
           </ul>
         </div>
