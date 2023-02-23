@@ -1,8 +1,8 @@
 .service-details-container {
-  margin: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 20px 0 20px;
 }
 
 .details-container {
@@ -27,4 +27,14 @@
 
   align-items: center;
   flex-direction: column;
+}
+
+.serviceName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.serviceName h3 {
+  font-size: 60px;
 }

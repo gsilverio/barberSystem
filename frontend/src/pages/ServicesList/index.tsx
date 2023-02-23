@@ -21,12 +21,13 @@ const ServiceList = () => {
 
   return (
     <>
-      <div className="container my-4">
+      <div className="container my-4 servicelist-container">
+        <h3>Serviços Disponiveis</h3>
         <div className="row">
           {page?.content.map((service) => {
             return (
               <div className="col-xl-4">
-                <Link to="/kindofservice/1">
+                <Link to={`/kindofservice/${service.id}`}>
                   <ServiceCard service={service} />
                 </Link>
               </div>

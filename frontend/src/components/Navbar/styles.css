@@ -1,12 +1,9 @@
 .navbar-container {
-  background-color: aqua;
+  text-align: center;
+  background-color: black;
+  color: #fff;
   padding-left: 10px;
   height: 70px;
-}
-
-.nav-logo-text {
-  color: #000;
-  font-size: 20px;
 }
 
 .main-menu {

@@ -1,8 +1,8 @@
 INSERT INTO tb_user(name, email, phone, password) VALUES ('GUILHERME','GUILHERME@GMAIL.COM','6296930508','12345');
-INSERT INTO tb_user(name, email, phone, password) VALUES ('ANA','ANA@GMAIL.COM','6296930508','12345');
-INSERT INTO tb_user(name, email, phone, password) VALUES ('JOAO','JOAO@GMAIL.COM','6296930508','12345');
-INSERT INTO tb_user(name, email, phone, password) VALUES ('JOSE','JOSE@GMAIL.COM','6296930508','12345');
-INSERT INTO tb_user(name, email, phone, password) VALUES ('PAULO','PAULO@GMAIL.COM','6296930508','12345');
+INSERT INTO tb_user(name, email, phone, password) VALUES ('ANA','ANA@GMAIL.COM','7193035506','12345');
+INSERT INTO tb_user(name, email, phone, password) VALUES ('JOAO','JOAO@GMAIL.COM','6299654580','12345');
+INSERT INTO tb_user(name, email, phone, password) VALUES ('JOSE','JOSE@GMAIL.COM','6291478693','12345');
+INSERT INTO tb_user(name, email, phone, password) VALUES ('PAULO','PAULO@GMAIL.COM','4596325882','12345');
 
 
 INSERT INTO tb_kind_of_service(name_of_service, price, img_url) VALUES ('CORTE CABELO', '30.0', 'https://user-images.githubusercontent.com/33436010/220815758-8536162a-e8e8-4ee0-865a-ac8ae04da042.png');

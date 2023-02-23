@@ -22,13 +22,18 @@ const ServiceDetails = () => {
 
   return (
     <>
-      <div className="base-card service-details-container">
-        <div className="img-container">
-          <img src={service?.imgUrl} alt="" />
+      <div className="serviceContainer">
+        <div className="serviceName">
+          <h3>Serviço</h3>
         </div>
-        <div className="name-price-container">
-          <h1>{service?.nameOfService}</h1>
-          {service && <ServicePrice price={service?.price} />}
+        <div className="base-card service-details-container">
+          <div className="img-container">
+            <img src={service?.imgUrl} alt="" />
+          </div>
+          <div className="name-price-container">
+            <h1>{service?.nameOfService}</h1>
+            {service && <ServicePrice price={service?.price} />}
+          </div>
         </div>
       </div>
     </>

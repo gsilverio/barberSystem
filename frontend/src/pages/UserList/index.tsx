@@ -22,12 +22,13 @@ const UserList = () => {
 
   return (
     <>
-      <div className="container my-4">
+      <div className="container my-4 userlist-container">
+        <h3>Cliente Cadastrados</h3>
         <div className="row">
           {page?.content.map((user) => {
             return (
               <div className="col-xl-3" key={user.id}>
-                <Link to="/users/1">
+                <Link to={`/users/${user.id}`}>
                   <UserCard user={user} />
                 </Link>
               </div>
